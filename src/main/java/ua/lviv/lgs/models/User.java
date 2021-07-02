@@ -9,27 +9,27 @@ public class User {
 
     private String lastName;
 
-    private UserRoles userRoles;
+    private UserRole userRole;
 
     private String password;
 
     public User() {
     }
 
-    public User(String email, String firstName, String lastName, UserRoles userRoles, String password) {
+    public User(String email, String firstName, String lastName, UserRole userRole, String password) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userRoles = userRoles;
+        this.userRole = userRole;
         this.password = password;
     }
 
-    public User(Integer id, String email, String firstName, String lastName, UserRoles userRoles, String password) {
+    public User(Integer id, String email, String firstName, String lastName, UserRole userRole, String password) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userRoles = userRoles;
+        this.userRole = userRole;
         this.password = password;
     }
 
@@ -65,12 +65,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public UserRoles getAccessLevel() {
-        return userRoles;
+    public UserRole getAccessLevel() {
+        return userRole;
     }
 
-    public void setAccessLevel(UserRoles userRoles) {
-        this.userRoles = userRoles;
+    public void setAccessLevel(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public String getPassword() {
@@ -87,7 +87,7 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (userRoles != null ? userRoles.hashCode() : 0);
+        result = 31 * result + (userRole != null ? userRole.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
@@ -103,7 +103,7 @@ public class User {
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (userRoles != user.userRoles) return false;
+        if (userRole != user.userRole) return false;
         return password != null ? password.equals(user.password) : user.password == null;
     }
 
@@ -114,7 +114,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", role=" + userRoles +
+                ", role=" + userRole +
                 ", password='" + password + '\'' +
                 '}';
     }
