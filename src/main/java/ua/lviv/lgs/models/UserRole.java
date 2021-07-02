@@ -1,5 +1,5 @@
 package ua.lviv.lgs.models;
 
-public enum AccessLevel {
+public enum UserRole {
     USER, ADMIN
 }
