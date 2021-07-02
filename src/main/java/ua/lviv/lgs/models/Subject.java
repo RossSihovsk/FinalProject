@@ -1,0 +1,6 @@
+package ua.lviv.lgs.models;
+
+public enum Subject {
+
+    UKRAINIAN_LANGUAGE, MATHEMATICS, HISTORY, CHEMISTRY, PHYSICS, ENGLISH_LANGUAGE, GERMAN_LANGUAGE,  BIOLOGY;
+}
