@@ -1,19 +1,45 @@
 package ua.lviv.lgs.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String email;
 
     private String firstName;
 
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
     private String lastName;
 
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
     private String password;
 
-    public User() {
+    private String passwordConfirm;
+
+    public User() { }
+
+    public User(User user) {
+        this.id = user.id;
+        this.email = user.email;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.password = user.password;
+        this.userRole = user.userRole;
     }
 
     public User(String email, String firstName, String lastName, UserRole userRole, String password) {
@@ -65,11 +91,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public UserRole getAccessLevel() {
+    public UserRole getUserRole() {
         return userRole;
     }
 
-    public void setAccessLevel(UserRole userRole) {
+    public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
     }
 

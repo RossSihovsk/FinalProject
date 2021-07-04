@@ -1,14 +1,20 @@
 package ua.lviv.lgs.models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "faculty")
 public class Faculty {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private FacultyName name;
 
     private Integer countOfStudents;
 
+    @ElementCollection
     private List<Subject> subjects;
 
     public Faculty() {
