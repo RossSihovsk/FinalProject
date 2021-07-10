@@ -25,8 +25,6 @@
 
     <title>Create an account</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 
 <body>
@@ -57,7 +55,7 @@
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="email" class="form-control" placeholder="Email"
                             autofocus="true"></form:input>
-                <form:errors path="email"></form:errors>
+                <form:errors path="username"></form:errors>
             </div>
         </spring:bind>
 
@@ -82,6 +80,5 @@
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

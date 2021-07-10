@@ -1,13 +1,13 @@
-package ua.lviv.lgs.models;
+package com.lviv.lgs.models;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "faculty")
+@Table(name = "t_faculty")
 public class Faculty {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private FacultyName name;
