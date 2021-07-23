@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security"
+           uri="http://www.springframework.org/security/tags"%>
 
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -19,22 +22,33 @@
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
+
+
+
 </head>
 <body>
 <div class="container">
 
     <!-- Sidebar -->
     <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
-        <h3 class="w3-bar-item">Menu</h3>
-        <a href="/home" class="w3-bar-item w3-button">Home</a>
-        <a href="/show-entrants" class="w3-bar-item w3-button">All entrants</a>
+
+        <a href="/home" class="w3-bar-item w3-button">home</a>
+        <a href="/show-entrants" class="w3-bar-item w3-button">entrants</a>
+
+            <a href="/admin_panel" class="w3-bar-item w3-button">adminpanel</a>
+        <a href="/login?logout" class="w3-bar-item w3-button">logout</a>
+
     </div>
 
 
     <!-- Page Content -->
     <div style="margin-left: 10%">
-        <div class="w3-container w3-teal"  >
-            <h1>Faculties</h1>
+        <div class="w3-container w3-orange w3-center"  >
+
+            <h1>title</h1>
         </div>
 
         <div class="w3-container">
@@ -45,29 +59,29 @@
                            value="${_csrf.token}" />
                 </form>
 
-                <h2>
-                    Welcome ${pageContext.request.userPrincipal.name} | <a
-                        onclick="document.forms['logoutForm'].submit()">Logout</a>
-                </h2>
+                <div class="w3-container" style="height: 50px; width: 100%">
+                    <h4>  Welcome ${pageContext.request.userPrincipal.name} </h4>
+                </div>
 
             </c:if>
+
             <div class="w3-container" style="display: flex; flex-wrap: wrap">
                 <c:if test="${not empty faculties}">
                     <c:forEach items="${faculties}" var="currentFaculty">
 
                         <div class="w3-card-4" style="width: 20%; margin: 2%">
                             <img
-                                    src="https://www.wegagen.com/wp-content/themes/linstar23/assets/images/default-275x220.jpg"
+                                    src="${currentFaculty.logoUrl}"
                                     alt="Faculty logo" style="width: 100%">
                             <div class="w3-container w3-center">
                                 <h3>${currentFaculty.name}</h3>
-                                <p>Number of students recruited:
-                                        ${currentFaculty.numberOfStudents}</p>
-                                <p>Necessary subjects for entry: ${currentFaculty.subjects}</p>
+                                <p>number_students:
+                                        ${currentFaculty.countOfStudents}</p>
+                                <p>necessary_subjects: ${currentFaculty.subjects}</p>
                             </div>
-                            <a class="w3-button w3-block w3-dark-grey"
-                               href="${contextPath}/register-for-faculty?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-                                Register</a>
+                                <a class="w3-button w3-block w3-dark-grey"
+                                   href="${contextPath}/faculty_reg?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
+                                    register</a>
 
                         </div>
 
@@ -79,7 +93,6 @@
 
 </div>
 <!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
 </body>
 </html>

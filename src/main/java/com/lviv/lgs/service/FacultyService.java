@@ -24,4 +24,8 @@ public class FacultyService {
     public Faculty findById(int id){
         return  facultyRepository.findById(id).get();
     }
+
+    public void deleteById(Integer id) {
+        facultyRepository.deleteById(id);
+    }
 }

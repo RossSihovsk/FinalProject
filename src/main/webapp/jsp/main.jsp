@@ -27,7 +27,7 @@
         <h4><a href="/logout">Вийти</a></h4>
     </sec:authorize>
     <h4><a href="/home">Кабінет (тільки корустувачу)</a></h4>
-    <h4><a href="/admin">Адмінпанель (тільки адміну)</a></h4>
+    <h4><a href="/admin_panel">Адмінпанель (тільки адміну)</a></h4>
 </div>
 </body>
 </html>

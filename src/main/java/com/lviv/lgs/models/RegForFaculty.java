@@ -1,15 +1,24 @@
+/**
+ * The Final project on "Java Developer" Course in LOGOS IT Academy
+ * University portal (Admissions Committee)
+ *
+ * Class ua.uz.alex.university.domain.RegistrationForFaculty  - domain layer
+ *
+ * @author Oleksandr Lukhanin
+ */
+
 package com.lviv.lgs.models;
 
 import javax.persistence.*;
 import java.util.List;
-
+import java.util.Objects;
 
 @Entity
 @Table(name = "faculty_registrations")
 public class RegForFaculty {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne()
@@ -23,6 +32,15 @@ public class RegForFaculty {
     @ElementCollection
     private List<Integer> marks;
 
+    @Column
+    private String uploadPhoto;
+
+    @Column
+    private String uploadDocument;
+
+    @Column
+    private Integer sumMarks;
+
     @Transient
     private int facultyId;
 
@@ -31,6 +49,8 @@ public class RegForFaculty {
 
     public RegForFaculty() {
     }
+
+
 
     public RegForFaculty(Faculty faculty, User user, List<Integer> marks) {
         this.faculty = faculty;
@@ -43,6 +63,23 @@ public class RegForFaculty {
         this.faculty = faculty;
         this.user = user;
         this.marks = marks;
+        // this.marksSum = marks.stream().reduce(0, Integer::sum);
+    }
+
+    public String getUploadDocument() {
+        return uploadDocument;
+    }
+
+    public void setUploadDocument(String uploadFile2) {
+        this.uploadDocument = uploadFile2;
+    }
+
+    public String getUploadPhoto() {
+        return uploadPhoto;
+    }
+
+    public void setUploadPhoto(String uploadFile) {
+        this.uploadPhoto = uploadFile;
     }
 
     public Integer getId() {
@@ -93,31 +130,34 @@ public class RegForFaculty {
         this.email = email;
     }
 
+    public Integer getSumMarks() {
+        return sumMarks;
+    }
+
+    public void setSumMarks(Integer sumMarks) {
+
+        this.sumMarks = sumMarks;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         RegForFaculty that = (RegForFaculty) o;
-
-        if (facultyId != that.facultyId) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (faculty != null ? !faculty.equals(that.faculty) : that.faculty != null) return false;
-        if (user != null ? !user.equals(that.user) : that.user != null) return false;
-        if (marks != null ? !marks.equals(that.marks) : that.marks != null) return false;
-        return email != null ? email.equals(that.email) : that.email == null;
+        return facultyId == that.facultyId &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(faculty, that.faculty) &&
+                Objects.equals(user, that.user) &&
+                Objects.equals(marks, that.marks) &&
+                Objects.equals(uploadPhoto, that.uploadPhoto) &&
+                Objects.equals(uploadDocument, that.uploadDocument) &&
+                Objects.equals(sumMarks, that.sumMarks) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (faculty != null ? faculty.hashCode() : 0);
-        result = 31 * result + (user != null ? user.hashCode() : 0);
-        result = 31 * result + (marks != null ? marks.hashCode() : 0);
-        result = 31 * result + facultyId;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
+        return Objects.hash(id, faculty, user, marks, uploadPhoto, uploadDocument, sumMarks, facultyId, email);
     }
-
-
 }

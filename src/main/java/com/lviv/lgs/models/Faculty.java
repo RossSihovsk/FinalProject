@@ -10,24 +10,43 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private FacultyName name;
+    @Column
+    private String name;
 
+    @Column
     private Integer countOfStudents;
 
-    @ElementCollection
+    private String logoUrl;
+
+    @ManyToMany(cascade = {
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name="faculty_subject",
+            joinColumns=@JoinColumn(name="faculty_id"),
+            inverseJoinColumns=@JoinColumn(name="subject_id")
+    )
     private List<Subject> subjects;
 
     public Faculty() {
     }
 
-    public Faculty(Integer id, FacultyName name, Integer countOfStudents, List<Subject> subjects) {
+    public Faculty(Integer id, String name, Integer countOfStudents, List<Subject> subjects) {
         this.id = id;
         this.name = name;
         this.countOfStudents = countOfStudents;
         this.subjects = subjects;
     }
 
-    public Faculty(FacultyName name, Integer countOfStudents, List<Subject> subjects) {
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public Faculty(String name, Integer countOfStudents, List<Subject> subjects) {
         this.name = name;
         this.countOfStudents = countOfStudents;
         this.subjects = subjects;
@@ -41,11 +60,11 @@ public class Faculty {
         this.id = id;
     }
 
-    public FacultyName getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(FacultyName name) {
+    public void setName(String name) {
         this.name = name;
     }
 
