@@ -1,5 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Ross
+  Date: 7/28/2021
+  Time: 11:32 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+          pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -20,10 +27,14 @@
 
     <title>Welcome</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/home/css/home.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
+
 
 
 
@@ -32,56 +43,66 @@
 <body>
 <div class="container">
 
-    <!-- Sidebar -->
-    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
-
-        <a href="/home" class="w3-bar-item w3-button">home</a>
-        <a href="/show-entrants" class="w3-bar-item w3-button">entrants</a>
-
-            <a href="/admin_panel" class="w3-bar-item w3-button">adminpanel</a>
-        <a href="/login?logout" class="w3-bar-item w3-button">logout</a>
-
-    </div>
-
-
     <!-- Page Content -->
-    <div style="margin-left: 10%">
-        <div class="w3-container w3-orange w3-center"  >
+    <div>
+        <div class="w3-container w3-center" style="padding-bottom:7%;"  >
 
-            <h1>title</h1>
+            <div id="wrapper" class="animate">
+                <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
+                    <p class="navbar-brand" >Особистий кабінет ${pageContext.request.userPrincipal.name} </p>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+
+                    <div class="collapse navbar-collapse" id="navbarText">
+
+                        <ul class="navbar-nav ml-md-auto d-md-flex">
+                            <li class="nav-item">
+                                <a style="right: 20px; text-align: center;" class="nav-link" href="/main">Головна сторінка<span class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="right: 20px; text-align: center;" class="nav-link" href="/show-entrants">Списки студентів<span class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link product-logout" href="/logout">Вийти</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
 
         <div class="w3-container">
 
-            <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <form id="logoutForm" method="POST" action="${contextPath}/logout">
-                    <input type="hidden" name="${_csrf.parameterName}"
-                           value="${_csrf.token}" />
-                </form>
+                    <div class="row  justify-content-center align-items-center d-flex text-center h-100">
+                        <div class="col-12 col-md-8  h-1 ">
+                            <h1 class="display-2  text-dark mb-1 mt-1"><strong>Кафедри</strong> </h1>
+                            <p class="lead  text-black-50 mb-5">Ви можете обрати кафедру та подати заявку на навчання</p>
 
-                <div class="w3-container" style="height: 50px; width: 100%">
-                    <h4>  Welcome ${pageContext.request.userPrincipal.name} </h4>
-                </div>
+                        </div>
 
-            </c:if>
+                    </div>
+        </div>
 
-            <div class="w3-container" style="display: flex; flex-wrap: wrap">
+
+            <div class="w3-container mt-4" style="display: flex; flex-wrap: wrap">
                 <c:if test="${not empty faculties}">
                     <c:forEach items="${faculties}" var="currentFaculty">
 
-                        <div class="w3-card-4" style="width: 20%; margin: 2%">
+                        <div class="w3-card-4" style="width: 20%;">
                             <img
                                     src="${currentFaculty.logoUrl}"
                                     alt="Faculty logo" style="width: 100%">
                             <div class="w3-container w3-center">
                                 <h3>${currentFaculty.name}</h3>
-                                <p>number_students:
-                                        ${currentFaculty.countOfStudents}</p>
-                                <p>necessary_subjects: ${currentFaculty.subjects}</p>
+                                <p>Кількість студентів: ${currentFaculty.countOfStudents}</p>
+                                <p>Необхідні предмети: ${currentFaculty.subjects}</p>
                             </div>
-                                <a class="w3-button w3-block w3-dark-grey"
-                                   href="${contextPath}/faculty_reg?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-                                    register</a>
+                            <a class="w3-button w3-block w3-dark-grey"
+                               href="${contextPath}/faculty_reg?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
+                                Зареєструватись</a>
 
                         </div>
 
@@ -90,9 +111,37 @@
             </div>
         </div>
     </div>
-
 </div>
+
+
+
 <!-- /container -->
 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">Designed by <a href= "https://www.youtube.com/watch?v=znFxy6-8UcM">@Ross_Sihovsk  <img style="height: 50px" class="mx-auto rounded-circle" src="main/assets/img/me.jpg" alt="..." /></a></p>
+
+            <ul class="social_footer_ul">
+
+                <li><a href="https://twitter.com/Axers_123" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/rostyslav-sihovskiy-11b896204/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/ross_sihovsk/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://github.com/RossSihovsk?tab=repositories" target="_blank"> <i class="fab fa-github"></i></a></li>
+
+            </ul>
+            <!--social_footer_ul ends here-->
+        </div>
+
+    </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>

@@ -19,8 +19,7 @@ public class Faculty {
     private String logoUrl;
 
     @ManyToMany(cascade = {
-            CascadeType.MERGE
-    })
+            CascadeType.ALL})
     @JoinTable(
             name="faculty_subject",
             joinColumns=@JoinColumn(name="faculty_id"),

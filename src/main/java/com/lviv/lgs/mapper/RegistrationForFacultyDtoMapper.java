@@ -28,13 +28,13 @@ public class RegistrationForFacultyDtoMapper {
         registrationForFaculty.setFaculty(faculty);
         registrationForFaculty.setUser(user);
         registrationForFaculty.setMarks(marks);
-
+        System.out.println(user.getFirstName()+"   "+user.getLastName());
         registrationForFaculty.setUploadPhoto(fileService.saveFileAndReturnPathForDB(filePhoto , user.getFirstName() +
                 "_" + user.getLastName() + "_photo"));
         registrationForFaculty.setUploadDocument(fileService.saveFileAndReturnPathForDB(fileDocument , user.getFirstName() +
                 "_" + user.getLastName() + "_document"));
 
-        //  faculty.setLogoUrl(fileService.saveFile(filePhoto , user.getFirstName() + "_" + user.getLastName()));
+
 
         return registrationForFaculty;
     }

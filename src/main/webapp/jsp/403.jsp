@@ -9,16 +9,25 @@
 <html>
 <head>
     <title>Error 403</title>
+    <link rel="stylesheet" href="403/css/403.css">
 </head>
 <body>
-<div>
-    <div>
-        <h3>No permission to access page!  </h3>
+<body>
+<section class="notFound">
+    <div class="img">
+        <img src="403/img/backToTheHomepage.webp" alt="Back to the Homepage"/>
+        <img src="403/img/Delorean.webp" alt="El Delorean, El Doc y Marti McFly"/>
     </div>
-    <form action="/logout" method="post">
-        <h4><a href="/logout">Змінити акаунт</a></h4>
-    </form>
+    <div class="text">
+        <h1>403</h1>
+        <h2>No permission</h2>
+        <h3>BACK TO HOME?</h3>
+        <a href="/main" class="yes">YES</a>
+        <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo">NO</a>
+    </div>
+</section>
+</body>
 
-</div>
+
 </body>
 </html>

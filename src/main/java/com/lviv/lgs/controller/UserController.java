@@ -42,8 +42,9 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
+        System.out.println(userForm.toString());
         userService.saveUser(userForm);
-        return "redirect:/home";
+        return "redirect:/main";
     }
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
