@@ -8,12 +8,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <!DOCTYPE HTML>
 <html>
 <head>
-        <title>Main Page</title>
+        <title><spring:message code='main.title'/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -35,15 +37,15 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <p class="navbar-brand"> Вітаємо ${pageContext.request.userPrincipal.name} </p>
+        <p class="navbar-brand"> <spring:message code='main.welcome'/> ${pageContext.request.userPrincipal.name} </p>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <sec:authorize access="!isAuthenticated()">
-                <li class="nav-item"><a class="nav-link" href="/login">Увійти</a></li>
-                <li class="nav-item"><a class="nav-link" href="/registration">Зареєструватись</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login"> <spring:message code='main.logIn'/></a></li>
+                <li class="nav-item"><a class="nav-link" href="/registration"> <spring:message code='main.reg'/></a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                <li class="nav-item"><a class="nav-link" href="/logout">Вийти</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout"> <spring:message code='main.logOut'/></a></li>
                 </sec:authorize>
             </ul>
         </div>
@@ -52,17 +54,17 @@
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">Фінальний проект</div>
-        <div class="masthead-heading text-uppercase">Приймальна комісія </div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Перейти далі</a>
+        <div class="masthead-subheading"> <spring:message code='main.FinalProject'/></div>
+        <div class="masthead-heading text-uppercase"> <spring:message code='main.projectName'/> </div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services"> <spring:message code='main.next'/></a>
     </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Меню</h2>
-            <h3 class="section-subheading text-muted">Виберіть необхідний вам пункт</h3>
+            <h2 class="section-heading text-uppercase"> <spring:message code='main.menu'/></h2>
+            <h3 class="section-subheading text-muted"> <spring:message code='main.chose'/></h3>
         </div>
         <div class="row text-center" >
             <div class="col-md-6 custom-hover" onclick="location.href='/home';" style="cursor: pointer;">
@@ -71,16 +73,16 @@
                             <!--                            <i class="fas fa-circle fa-stack-2x text-primary"></i>-->
                             <!--                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>-->
                         </span>
-                <h4 class="my-3">Особистий кабінет</h4>
-                <p class="text-muted">Особистий кабінет створений виключно для студентів, які бажають подати документи на одну із кафедр нашого університету</p>
+                <h4 class="my-3"> <spring:message code='main.cabinet'/></h4>
+                <p class="text-muted"> <spring:message code='main.pcDesript'/></p>
             </div>
             <div class="col-md-6 custom-hover" onclick="location.href='/admin_panel';" style="cursor: pointer;">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
-                <h4 class="my-3">Адмін-панель</h4>
-                <p class="text-muted">Адмін-панель доступна тільки для адміністраторів закладу, для створення нової кафедри </p>
+                <h4 class="my-3"> <spring:message code='main.admin'/></h4>
+                <p class="text-muted"> <spring:message code='main.apDescript'/> </p>
             </div>
 
         </div>
@@ -92,17 +94,17 @@
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Технології</h2>
-            <h3 class="section-subheading text-muted">Технології які використовувались в проекті</h3>
+            <h2 class="section-heading text-uppercase"> <spring:message code='main.Tech'/></h2>
+            <h3 class="section-subheading text-muted"> <spring:message code='main.techDescript'/></h3>
         </div>
         <ul class="timeline">
             <li>
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/HTML5.png" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">HTML-5</h4>
+                        <h4 class="subheading"> <spring:message code='main.html'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">HTML5 — наступна версія мови HTML.це мова тегів, засобами якої здійснюється розмічання вебсторінок для мережі Інтернет. Браузери отримують HTML-документи з вебсервера або з локальної пам'яті й передають документи в мультимедійні вебсторінки. </p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.htmlDescript'/> </p></div>
                 </div>
             </li>
 
@@ -110,36 +112,36 @@
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/css-3-logo.png" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">CSS</h4>
+                        <h4 class="subheading"> <spring:message code='main.css'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">це спеціальна мова стилю сторінок, що використовується для опису їхнього зовнішнього вигляду. Самі ж сторінки написані мовами розмітки даних. CSS є основною технологією всесвітньої павутини, поряд із HTML</p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.cssDescript'/></p></div>
                 </div>
             </li>
             <li>
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/jsl.jpg" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">Java-Script</h4>
+                        <h4 class="subheading"> <spring:message code='main.js'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">динамічна, об'єктно-орієнтована прототипна мова програмування.Найчастіше використовується для створення сценаріїв вебсторінок, що надає можливість на боці клієнта  взаємодіяти з користувачем</p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.jsDescript'/></p></div>
                 </div>
             </li>
             <li class="timeline-inverted">
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/msqlLogo.png" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">MySQL</h4>
+                        <h4 class="subheading"> <spring:message code='main.mySql'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">вільна система керування реляційними базами даних,була створена як альтернатива комерційним системам. MySQL з самого початку була дуже схожою на mSQL, проте з часом вона все розширювалася і зараз MySQL — одна з найпоширеніших систем керування базами даних.</p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.mySqlDescript'/></p></div>
                 </div>
             </li>
             <li>
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/java-logo.png" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">Java</h4>
+                        <h4 class="subheading"> <spring:message code='main.java'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Основна мова на якій виконано данний проект. об'єктно-орієнтована мова програмування, випущена 1995 року компанією «Sun Microsystems» як основний компонент платформи Java. В офіційній реалізації Java-програми компілюються у байт-код, який при виконанні інтерпретується віртуальною машиною для конкретної платформи.</p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.javaDescript'/></p></div>
                 </div>
             </li>
 
@@ -147,19 +149,19 @@
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="main/assets/img/spring-logo.png" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">Spring</h4>
+                        <h4 class="subheading"> <spring:message code='main.spring'/></h4>
                     </div>
-                    <div class="timeline-body"><p class="text-muted">Spring – це фреймворк, який допомагає розробляти прості, швидкі, гнучкі і переносні додатки на Java. Модулі які були використані: Spring Boot, Spring Data, Spring MVC, Spring Security</p></div>
+                    <div class="timeline-body"><p class="text-muted"> <spring:message code='main.springDescription'/></p></div>
                 </div>
             </li>
             <li class="timeline-inverted">
                 <div class="timeline-image">
                     <h4>
-                        Проект
+                        <spring:message code='main.extend1'/>
                         <br />
-                        Підтримує
+                        <spring:message code='main.extend2'/>
                         <br />
-                        Розширення!
+                        <spring:message code='main.extend3'/>
                     </h4>
                 </div>
             </li>
@@ -170,15 +172,15 @@
 <section class="page-section bg-light" id="team">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Розробник</h2>
-            <h3 class="section-subheading text-muted">Посилання на мої соц-мережі</h3>
+            <h2 class="section-heading text-uppercase"> <spring:message code='main.dev'/></h2>
+            <h3 class="section-subheading text-muted"> <spring:message code='main.linkSocial'/></h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="main/assets/img/me.jpg" alt="..." />
-                    <h4>Сіховський Ростислав</h4>
-                    <p class="text-muted">Розробник та дизайнер</p>
+                    <h4> <spring:message code='main.myName'/></h4>
+                    <p class="text-muted"> <spring:message code='main.myRole'/></p>
                     <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/Axers_123"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/rostyslav-sihovskiy-11b896204/"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://github.com/RossSihovsk?tab=repositories"><i class="fab fa-github"></i></a>
@@ -188,7 +190,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Буду радий вашому візиту та будь-якій активності у моїх соціальних мережах</p></div>
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted"> <spring:message code='main.yourVisit'/></p></div>
         </div>
     </div>
 </section>

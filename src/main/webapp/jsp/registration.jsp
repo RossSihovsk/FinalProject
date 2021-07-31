@@ -20,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Create an account</title>
+    <title><spring:message code='registration.title'/></title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="logAndReg/fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -32,55 +32,7 @@
 
 <body>
 
-<%--<div class="container">--%>
 
-<%--    <form:form method="POST" modelAttribute="userForm" class="form-signin">--%>
-<%--        <h2 class="form-signin-heading">Create your account</h2>--%>
-
-<%--        <spring:bind path="firstName">--%>
-<%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-<%--                <form:input type="text" path="firstName" class="form-control" placeholder="First name"--%>
-<%--                            autofocus="true"></form:input>--%>
-<%--                <form:errors path="firstName"></form:errors>--%>
-<%--            </div>--%>
-<%--        </spring:bind>--%>
-
-<%--        <spring:bind path="lastName">--%>
-<%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-<%--                <form:input type="text" path="lastName" class="form-control" placeholder="Last name"--%>
-<%--                            autofocus="true"></form:input>--%>
-<%--                <form:errors path="lastName"></form:errors>--%>
-<%--            </div>--%>
-<%--        </spring:bind>--%>
-
-
-<%--        <spring:bind path="email">--%>
-<%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-<%--                <form:input type="text" path="email" class="form-control" placeholder="Email"--%>
-<%--                            autofocus="true"></form:input>--%>
-<%--                <form:errors path="username"></form:errors>--%>
-<%--            </div>--%>
-<%--        </spring:bind>--%>
-
-<%--        <spring:bind path="password">--%>
-<%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-<%--                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>--%>
-<%--                <form:errors path="password"></form:errors>--%>
-<%--            </div>--%>
-<%--        </spring:bind>--%>
-
-<%--        <spring:bind path="passwordConfirm">--%>
-<%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-<%--                <form:input type="password" path="passwordConfirm" class="form-control"--%>
-<%--                            placeholder="Confirm your password"></form:input>--%>
-<%--                <form:errors path="passwordConfirm"></form:errors>--%>
-<%--            </div>--%>
-<%--        </spring:bind>--%>
-
-<%--        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>--%>
-<%--    </form:form>--%>
-
-<%--</div>--%>
 
 <!-- Sign up form -->
 <div class="main">
@@ -88,7 +40,7 @@
     <div class="container">
         <div class="signup-content">
             <div class="signup-form">
-                <h2 class="form-title">Sign up</h2>
+                <h2 class="form-title"><spring:message code='registration.signup'/></h2>
                 <form:form method="POST" modelAttribute="userForm" class="form-signin">
                     <div class="form-group">
                         <label><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -112,13 +64,13 @@
                     </div>
 
                     <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="<spring:message code='registration.register'/>"/>
                     </div>
                 </form:form>
             </div>
             <div class="signup-image">
                 <figure><img src="logAndReg/images/signup-image.jpg" alt="sing up image"></figure>
-                <a href="/login" class="signup-image-link">I am already member</a>
+                <a href="/login" class="signup-image-link"><spring:message code='registration.alreadyMember'/></a>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registered entrants</title>
+    <title><spring:message code='showReg.title'/></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
@@ -29,7 +29,7 @@
     <div class="w3-container  w3-center " style="padding-bottom:5%;">
         <div id="wrapper" class="animate">
             <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <p class="navbar-brand" >Список студентів</p>
+                <p class="navbar-brand" ><spring:message code='showReg.listStud'/></p>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,10 +40,10 @@
 
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
-                            <a style="right: 20px; text-align: center;" class="nav-link" href="/home">Назад<span class="sr-only"></span></a>
+                            <a style="right: 20px; text-align: center;" class="nav-link" href="/home"><spring:message code='showReg.back'/><span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link product-logout" href="/logout">Вийти</a>
+                            <a class="nav-link product-logout" href="/logout"><spring:message code='showReg.logOut'/></a>
                         </li>
                     </ul>
                 </div>
@@ -55,8 +55,8 @@
 
         <div class="row  justify-content-center align-items-center d-flex text-center h-100">
             <div class="col-12 col-md-8  h-1 ">
-                <h1 class="display-2  text-dark mb-1 mt-1"><strong>Список Студентів</strong> </h1>
-                <p class="lead  text-black-50 mb-5">Тут ви можете ознайомитись із списком студентів яких прийнято в наш університет а також їхніми балами та документами</p>
+                <h1 class="display-2  text-dark mb-1 mt-1"><strong><spring:message code='showReg.listStud'/></strong> </h1>
+                <p class="lead  text-black-50 mb-5"><spring:message code='showReg.listDescript'/></p>
 
             </div>
 
@@ -68,14 +68,14 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Факультет</th>
-            <th>Імя</th>
-            <th>Прізвище</th>
-            <th>Пошта</th>
-            <th>Оцінки</th>
-            <th>Фото</th>
-            <th>Документ</th>
-            <th>Сума балів</th>
+            <th><spring:message code='showReg.facultyName'/></th>
+            <th><spring:message code='showReg.studName'/></th>
+            <th><spring:message code='showReg.lastName'/></th>
+            <th><spring:message code='showReg.email'/></th>
+            <th><spring:message code='showReg.marks'/></th>
+            <th><spring:message code='showReg.photo'/></th>
+            <th><spring:message code='showReg.doc'/></th>
+            <th><spring:message code='showReg.sumMarks'/></th>
         </tr>
         </thead>
         <tbody id="myTable">

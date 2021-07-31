@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
     <title>Error 403</title>
@@ -20,10 +21,10 @@
     </div>
     <div class="text">
         <h1>403</h1>
-        <h2>No permission</h2>
-        <h3>BACK TO HOME?</h3>
-        <a href="/main" class="yes">YES</a>
-        <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo">NO</a>
+        <h2><spring:message code='403.noPermission'/></h2>
+        <h3><spring:message code='403.backHome'/></h3>
+        <a href="/main" class="yes"><spring:message code='403.yes'/></a>
+        <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo"><spring:message code='403.no'/></a>
     </div>
 </section>
 </body>

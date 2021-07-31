@@ -25,7 +25,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Welcome</title>
+    <title><spring:message code='home.title'/></title>
 
     <link rel="stylesheet" href="/home/css/home.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -49,7 +49,7 @@
 
             <div id="wrapper" class="animate">
                 <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-                    <p class="navbar-brand" >Особистий кабінет ${pageContext.request.userPrincipal.name} </p>
+                    <p class="navbar-brand" ><spring:message code='home.personalCabinet'/> ${pageContext.request.userPrincipal.name} </p>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -60,13 +60,13 @@
 
                         <ul class="navbar-nav ml-md-auto d-md-flex">
                             <li class="nav-item">
-                                <a style="right: 20px; text-align: center;" class="nav-link" href="/main">Головна сторінка<span class="sr-only"></span></a>
+                                <a style="right: 20px; text-align: center;" class="nav-link" href="/main"><spring:message code='home.mainPage'/><span class="sr-only"></span></a>
                             </li>
                             <li class="nav-item">
-                                <a style="right: 20px; text-align: center;" class="nav-link" href="/show-entrants">Списки студентів<span class="sr-only"></span></a>
+                                <a style="right: 20px; text-align: center;" class="nav-link" href="/show-entrants"><spring:message code='home.listOfStudents'/><span class="sr-only"></span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link product-logout" href="/logout">Вийти</a>
+                                <a class="nav-link product-logout" href="/logout"><spring:message code='home.logOut'/></a>
                             </li>
                         </ul>
                     </div>
@@ -78,8 +78,8 @@
 
                     <div class="row  justify-content-center align-items-center d-flex text-center h-100">
                         <div class="col-12 col-md-8  h-1 ">
-                            <h1 class="display-2  text-dark mb-1 mt-1"><strong>Кафедри</strong> </h1>
-                            <p class="lead  text-black-50 mb-5">Ви можете обрати кафедру та подати заявку на навчання</p>
+                            <h1 class="display-2  text-dark mb-1 mt-1"><strong><spring:message code='home.caf'/></strong> </h1>
+                            <p class="lead  text-black-50 mb-5"><spring:message code='home.cafDescript'/></p>
 
                         </div>
 
@@ -97,12 +97,12 @@
                                     alt="Faculty logo" style="width: 100%">
                             <div class="w3-container w3-center">
                                 <h3>${currentFaculty.name}</h3>
-                                <p>Кількість студентів: ${currentFaculty.countOfStudents}</p>
-                                <p>Необхідні предмети: ${currentFaculty.subjects}</p>
+                                <p><spring:message code='home.countOfStud'/> ${currentFaculty.countOfStudents}</p>
+                                <p><spring:message code='home.nessSubj'/> ${currentFaculty.subjects}</p>
                             </div>
                             <a class="w3-button w3-block w3-dark-grey"
                                href="${contextPath}/faculty_reg?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-                                Зареєструватись</a>
+                                <spring:message code='home.reg'/></a>
 
                         </div>
 

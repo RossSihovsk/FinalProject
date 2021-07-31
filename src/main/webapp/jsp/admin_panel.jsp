@@ -1,11 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>!
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="security"
-           uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin panel</title>
+    <title><spring:message code='admin.title'/></title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -37,10 +35,10 @@
 </div>
 <!-- Page Content -->
 <div>
-    <div class="w3-container  w3-center " style="padding-bottom:5%;">
+    <div class="w3-container  w3-center " style="padding-bottom:7%;">
         <div id="wrapper" class="animate">
             <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <p class="navbar-brand" >Список студентів</p>
+                <p class="navbar-brand" ><spring:message code='admin.header'/></p>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -51,10 +49,10 @@
 
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
-                            <a style="right: 20px; text-align: center;" class="nav-link" href="/main">Назад<span class="sr-only"></span></a>
+                            <a style="right: 20px; text-align: center;" class="nav-link" href="/main"><spring:message code='admin.back'/><span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link product-logout" href="/logout">Вийти</a>
+                            <a class="nav-link product-logout" href="/logout"><spring:message code='admin.logOut'/></a>
                         </li>
                     </ul>
                 </div>
@@ -62,39 +60,29 @@
         </div>
     </div>
 
-<%--    <div class="w3-container">--%>
 
-<%--        <div class="row  justify-content-center align-items-center d-flex text-center h-100">--%>
-<%--            <div class="col-12 col-md-8  h-1 ">--%>
-<%--                <h1 class="display-2  text-dark mb-1 mt-1"><strong>Керування кафедрами</strong> </h1>--%>
-<%--                <p class="lead  text-black-50 mb-5">Ви можете створити нову кафедру або видалити існуючу</p>--%>
-
-<%--            </div>--%>
-
-<%--        </div>--%>
-<%--    </div>--%>
 
     <div class="w3-container">
 
         <div class="w3-container admin_panel">
-            <h2>Форма створення</h2>
+            <h2><spring:message code='admin.createForm'/></h2>
             <form:form method="POST" action="${contextPath}/add_faculty" enctype="multipart/form-data">
 
                 <div class="column_wrapper" style="display: flex; flex-wrap: wrap">
                     <div class="column1" style="margin: 0px 20px 5px 20px">
-                        <label for="facultyName">Імя факультету</label><br>
+                        <label for="facultyName"><spring:message code='admin.fName'/></label><br>
                         <input type="text" id="facultyName" name="facultyName"><br>
-                        <label for="numberOfStudents">Кількість студентів</label><br>
+                        <label for="numberOfStudents"><spring:message code='admin.fCountOfStud'/></label><br>
                         <input type="number" id="numberOfStudents" name="numberOfStudents" value="1"><br>
-                        <label for="facultyLogo">Логотип</label><br>
+                        <label for="facultyLogo"><spring:message code='admin.logo'/></label><br>
                         <input type="file" id="facultyLogo" name="facultyLogo" value=choose_file><br>
                     </div>
                     <div class="column2" style="margin: 0px 20px 5px 20px">
-                        <label for="firstSubject">Перший предмет </label><br>
+                        <label for="firstSubject"><spring:message code='admin.first'/> </label><br>
                         <input type="text" id="firstSubject" name="firstSubject" value="Ukrainian" readonly><br>
-                        <label for="secondSubject">Другий предмет </label><br>
+                        <label for="secondSubject"><spring:message code='admin.second'/> </label><br>
                         <input type="text" id="secondSubject" name="secondSubject" value="Mathematics" readonly><br>
-                        <label for="thirdSubject">Третій предмет</label><br>
+                        <label for="thirdSubject"><spring:message code='admin.third'/></label><br>
 
                         <select name="thirdSubject" id="thirdSubject">
                             <option value="English">English</option>
@@ -105,18 +93,18 @@
                         </select>
                     </div>
                 </div>
-                <input type="submit" value=submit style="margin-left: 20px; color: white; width: 250px; background-color: #263238">
+                <input type="submit" value="<spring:message code='admin.submit'/>" style="margin-left: 20px; color: white; width: 250px; background-color: #263238">
             </form:form>
             <br>
-            <h2>Список: </h2>
+            <h2><spring:message code='admin.list'/></h2>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>Імя факультету</th>
-                    <th>Кількість студентів</th>
-                    <th>Предмети</th>
-                    <th>Фото</th>
-                    <th>Видалення</th>
+                    <th><spring:message code='admin.name'/></th>
+                    <th><spring:message code='admin.count'/></th>
+                    <th><spring:message code='admin.sub'/></th>
+                    <th><spring:message code='admin.photo'/></th>
+                    <th><spring:message code='admin.del'/></th>
                 </tr>
                 </thead>
                 <tbody id="myTable">
@@ -130,7 +118,7 @@
                                     src="${currentFaculty.logoUrl}"
                                     alt="Faculty logo" style="width: 100px"></td>
                             <td> <%--<a href="#">Edit</a>  <br>--%>
-                                <a href="${contextPath}/admin_panel/delete/${currentFaculty.id}">Видалити</a>
+                                <a href="${contextPath}/admin_panel/delete/${currentFaculty.id}"><spring:message code='admin.delete'/></a>
                             </td>
                         </tr>
                     </c:forEach>

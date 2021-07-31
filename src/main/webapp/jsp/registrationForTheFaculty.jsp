@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Student registration for the faculty</title>
+    <title><spring:message code='regForFaculty.title'/></title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="/regForFaculty/css/regForFaculty.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -29,7 +29,7 @@
 
                 <div id="wrapper" class="animate">
                     <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-                        <p class="navbar-brand" >Факультет ${registrationForFaculty.faculty.name} </p>
+                        <p class="navbar-brand" ><spring:message code='regForFaculty.name'/> ${registrationForFaculty.faculty.name} </p>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -40,17 +40,17 @@
 
                             <ul class="navbar-nav ml-md-auto d-md-flex">
                                 <li class="nav-item">
-                                    <a style="right: 20px; text-align: center;" class="nav-link" href="/home">Назад<span class="sr-only"></span></a>
+                                    <a style="right: 20px; text-align: center;" class="nav-link" href="/home"><spring:message code='regForFaculty.back'/><span class="sr-only"></span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link product-logout" href="/logout">Вийти</a>
+                                    <a class="nav-link product-logout" href="/logout"><spring:message code='regForFaculty.logOut'/></a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
             </div>
-            <h1>Реєстрація на факультет ${registrationForFaculty.faculty.name}</h1>
+            <h1><spring:message code='regForFaculty.regOn'/> ${registrationForFaculty.faculty.name}</h1>
         </div>
 
         <div class="w3-container admin_panel ">
@@ -59,18 +59,18 @@
 
                 <div class="column_wrapper" style="display: flex; flex-wrap: wrap">
                     <div class="column1" style="margin: 0px 20px 5px 20px">
-                        <label > <strong>Пошта:</strong> </label>
+                        <label > <strong><spring:message code='regForFaculty.form'/>:</strong> </label>
                         <label >${pageContext.request.userPrincipal.name}</label><br>
 
-                        <label > <strong>Імя:</strong> </label>
+                        <label > <strong><spring:message code='regForFaculty.email'/></strong> </label>
                         <label >${currentUser.firstName}</label><br>
 
-                        <label > <strong>Прізвище:</strong> </label>
+                        <label > <strong><spring:message code='regForFaculty.studName'/></strong> </label>
                         <label >${currentUser.lastName}</label><br>
 
-                        <label for="userPhoto"><strong>Фото</strong></label><br>
+                        <label for="userPhoto"><strong><spring:message code='regForFaculty.photo'/></strong></label><br>
                         <input type="file" id="userPhoto" name="userPhoto" style="margin-top: 10px; margin-bottom: 10px"><br>
-                        <label for="documentPhoto"><strong>Сертифікату</strong></label><br>
+                        <label for="documentPhoto"><strong><spring:message code='regForFaculty.certificate'/></strong></label><br>
                         <input type="file" id="documentPhoto" name="documentPhoto" style="margin-top: 10px; margin-bottom: 10px"><br>
                     </div>
                     <div class="column2" style="margin: 0px 20px 5px 20px">
@@ -78,7 +78,7 @@
 
                             <c:forEach items="${registrationForFaculty.faculty.subjects}" var="currentSubject">
                                 <tr  style="height: 70px">
-                                    <td><form:label path="marks"><strong>The mark from subject  ${currentSubject}</strong> </form:label></td>
+                                    <td><form:label path="marks"><strong><spring:message code='regForFaculty.mark'/>  ${currentSubject}</strong> </form:label></td>
                                     <td><form:input path="marks" /> </td>
                                 </tr>
 
@@ -92,7 +92,7 @@
                         </table>
                     </div>
                 </div>
-                <input type="submit" value="Register" style="margin-left: 20px; color: white; width: 250px;
+                <input type="submit" value="<spring:message code='regForFaculty.register'/>" style="margin-left: 20px; color: white; width: 250px;
 															margin-top: 10px; background-color: #263238">
             </form:form>
             <br>

@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/logAndReg/**", "/js/**", "/403/**","/main/**","/home/**","/regForFaculty/**",
-                        "/showReg/**","/ProjectIMG/**", "/showReg/**","/admin_panel/**").permitAll()
+                        "/showReg/**","/ProjectIMG/**", "/showReg/**","/admin_panel/**","/i18n/").permitAll()
                 //Доступ только для не зарегистрированных пользователей
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/registration").not().fullyAuthenticated()
