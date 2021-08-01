@@ -1,9 +1,11 @@
 package com.lviv.lgs.service;
 
 import com.lviv.lgs.models.RegForFaculty;
+import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 
+@Service
 public class RegistrationMarksCompareService implements Comparator<RegForFaculty> {
     @Override
     public int compare(RegForFaculty t1, RegForFaculty t2) {

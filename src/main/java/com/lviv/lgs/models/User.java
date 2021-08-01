@@ -35,6 +35,12 @@ public class User  implements UserDetails {
     public User() {
     }
 
+    public User(Integer id, @Email String email, String firstName, String lastName ) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
