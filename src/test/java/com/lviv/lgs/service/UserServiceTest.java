@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,6 @@ class UserServiceTest {
         user1.setPassword("testpassword");
         service.saveUser(user1);
         service.deleteUser((long)1);
-
         Assertions.assertEquals(0,service.allUsers().size(),"There should be null");
 
     }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "t_faculty")
+@Table(name = "faculty")
 public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Faculty {
     private String logoUrl;
 
     @ManyToMany(cascade = {
-            CascadeType.ALL})
+            CascadeType.MERGE})
     @JoinTable(
             name="faculty_subject",
             joinColumns=@JoinColumn(name="faculty_id"),

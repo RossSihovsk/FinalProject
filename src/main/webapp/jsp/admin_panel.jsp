@@ -78,18 +78,46 @@
                         <input type="file" id="facultyLogo" name="facultyLogo" value=choose_file><br>
                     </div>
                     <div class="column2" style="margin: 0px 20px 5px 20px">
-                        <label for="firstSubject"><spring:message code='admin.first'/> </label><br>
-                        <input type="text" id="firstSubject" name="firstSubject" value="Ukrainian" readonly><br>
-                        <label for="secondSubject"><spring:message code='admin.second'/> </label><br>
-                        <input type="text" id="secondSubject" name="secondSubject" value="Mathematics" readonly><br>
-                        <label for="thirdSubject"><spring:message code='admin.third'/></label><br>
-
+                        <label for="firstSubject"><spring:message code='admin.first'/> </label>
+                        <br>
+                        <select name="firstSubject" id="firstSubject">
+                            <option value="English">English</option>
+                            <option value="Chemistry">literature</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="History">History</option>
+                            <option value="Chemistry">French</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Geography</option>
+                            <option value="Chemistry">Informatics</option>
+                        </select>
+                        <br>
+                        <label for="secondSubject"><spring:message code='admin.second'/> </label>
+                        <br>
+                        <select name="secondSubject" id="secondSubject">
+                            <option value="English">English</option>
+                            <option value="Chemistry">literature</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="History">History</option>
+                            <option value="Chemistry">French</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Geography</option>
+                            <option value="Chemistry">Informatics</option>
+                        </select>
+                        <br>
+                        <label for="thirdSubject"><spring:message code='admin.third'/></label>
+                        <br>
                         <select name="thirdSubject" id="thirdSubject">
                             <option value="English">English</option>
+                            <option value="Chemistry">literature</option>
                             <option value="Biology">Biology</option>
-                            <option value="History">History</option>
-                            <option value="Physics">Physics</option>
                             <option value="Chemistry">Chemistry</option>
+                            <option value="History">History</option>
+                            <option value="Chemistry">French</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Geography</option>
+                            <option value="Chemistry">Informatics</option>
                         </select>
                     </div>
                 </div>

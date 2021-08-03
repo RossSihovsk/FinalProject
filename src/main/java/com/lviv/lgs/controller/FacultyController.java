@@ -11,6 +11,7 @@
 package com.lviv.lgs.controller;
 
 
+import com.lviv.lgs.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,13 +35,13 @@ public class FacultyController {
     FacultyService facultyService;
 
     @Autowired
-    private SubjectRepository subjectRepository;
+    private SubjectService subjectService;
 
     @Autowired
     private FacultyDtoMapper facultyDtoMapper;
 
     @PostMapping("/add_faculty")
-    public ModelAndView createFaculty (
+    public ModelAndView createNewFaculty(
             @RequestParam MultipartFile facultyLogo,
             @RequestParam String facultyName,
             @RequestParam Integer numberOfStudents,
@@ -49,41 +50,23 @@ public class FacultyController {
             @RequestParam String thirdSubject
             ) throws IOException {
 
-
-        List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject(firstSubject));
-        subjects.add(new Subject(secondSubject));
-        subjects.add(new Subject(thirdSubject));
-        subjects.stream().forEach(System.out::println);
-        Faculty faculty = facultyDtoMapper.createEntity(facultyLogo, facultyName, numberOfStudents, subjects);
-        facultyService.save(faculty);
-        return new ModelAndView("redirect:/admin_panel");
-    }
-
-    @GetMapping("/admin_panel")
-    public String getAdminPanel(Model model){
-        List<Faculty> allFaculties = facultyService.getAllFaculties();
-        model.addAttribute("faculties" , allFaculties);
-        model.addAttribute("subjects" , subjectRepository.findAll());
-        return "admin_panel";
-    }
-
-    @GetMapping("/admin_panel/{delete}/{id}")
-    public ModelAndView deleteFaculty(@PathVariable String delete, @PathVariable Integer id) {
-        if (delete.equals("delete")) {
-            facultyService.deleteById(id);
-            getFacultyItems();
+        if(firstSubject.equals(secondSubject) | firstSubject.equals(thirdSubject) | secondSubject.equals(thirdSubject)){
+            return new ModelAndView("redirect:/admin_panel");
         }
-        //facultyService.deleteById(id);
+        else {
 
-        return new ModelAndView("redirect:/admin_panel");
+            List<Subject> subjects = new ArrayList<>();
+            subjects.add(new Subject(firstSubject));
+            subjects.add(new Subject(secondSubject));
+            subjects.add(new Subject(thirdSubject));
+            subjects.forEach(System.out::println);
+            Faculty faculty = facultyDtoMapper.createEntity(facultyLogo, facultyName, numberOfStudents, subjects);
+            facultyService.save(faculty);
+            return new ModelAndView("redirect:/admin_panel");
+        }
     }
 
-    private ModelAndView getFacultyItems () {
-        ModelAndView mav = new ModelAndView("admin_panel");
-        mav.addObject("facultetItems", facultyService.getAllFaculties());
-        return mav;
-    }
+
 
 
 }

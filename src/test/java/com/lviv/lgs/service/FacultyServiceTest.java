@@ -29,7 +29,7 @@ class FacultyServiceTest {
     private FacultyService service;
 
 
-    @Test
+    @Test()
     void getAllFaculties() {
         List<Subject> subjects = new ArrayList<>();
         subjects.add(new Subject("Sub1"));

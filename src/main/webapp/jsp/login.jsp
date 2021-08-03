@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ross
-  Date: 7/9/2021
-  Time: 6:06 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,9 +22,7 @@
 </head>
 
 <body>
-<%--<sec:authorize access="isAuthenticated()">--%>
-<%--    <% response.sendRedirect("/"); %>--%>
-<%--</sec:authorize>--%>
+
 <div class="main">
 
 <!-- Sing in  Form -->

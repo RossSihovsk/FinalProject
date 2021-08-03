@@ -15,7 +15,7 @@ public class FileService {
 
     public String saveFileAndReturnPathForDB(MultipartFile multipartFile , String filename) throws IOException {
 
-        String pathStartPart =  "src/main/resources/public/";
+        String pathStartPart =  "src/main/webapp/";
         String pathSecondPart = "ProjectIMG/faculty/";
         String pathToDB = pathSecondPart + filename + "/" + multipartFile.getOriginalFilename();
         String filePathToFileSystem = pathStartPart + pathToDB;

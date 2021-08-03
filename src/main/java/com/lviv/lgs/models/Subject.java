@@ -13,7 +13,7 @@ public class Subject {
     @Column
     private String name;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Faculty> faculties;
 
     public Subject() {

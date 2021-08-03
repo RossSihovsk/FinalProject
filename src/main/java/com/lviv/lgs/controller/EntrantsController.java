@@ -25,7 +25,7 @@ public class EntrantsController {
     private RegForFacultyService registrationForFacultyService;
 
     @GetMapping("/show-entrants")
-    public ModelAndView showAllEntrants() {
+    public ModelAndView showEntrants() {
         return new ModelAndView("showRegistrations", "facultyRegistrations",
                 registrationForFacultyService.showAllEntrants());
     }
