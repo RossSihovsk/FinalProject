@@ -1,5 +1,5 @@
-Selection committee. The project used all mentioned
-skills. It includes internationalization, logging and
+Selection committee. The project based on maven technology.
+It includes internationalization, logging and
 registration with different levels of security access,
 stylization, interactivity, custom 403-Error page. There
 are two variations of access. Administrator - create
